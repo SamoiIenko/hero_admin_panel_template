@@ -52,14 +52,14 @@ const reducer = (state = initialState, action) => {
                                 state.heroes :
                                 state.heroes.filter(item => item.element === action.payload)
             } 
-        case 'HERO_ADDED':
-            const heroAdded = [...state.heroes, action.payload]
+        case 'HERO_CREATED':
+            const heroCreated = [...state.heroes, action.payload]
             return {
                 ...state,
-                heroes: heroAdded,
+                heroes: heroCreated,
                 filteredHeroes: state.activeFilter === 'all' ?
-                                heroAdded :
-                                heroAdded.filter(item => item.element === state.activeFilter)
+                                heroCreated :
+                                heroCreated.filter(item => item.element === state.activeFilter)
             }
         case 'HERO_DELETED':
             const heroFilter = state.heroes.filter(item => item.id !== action.payload);

@@ -1,3 +1,10 @@
+import {useHttp} from '../../hooks/http.hook';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import classNames from 'classnames';
+
+import { filtersFetching, filtersFetched, filtersFetchingError, activeFilterChanged} from '../../actions';
+import Spinner from '../spinner/Spinner';
 
 // Задача для этого компонента:
 // Фильтры должны формироваться на основании загруженных данных
@@ -5,14 +12,6 @@
 // Активный фильтр имеет класс active
 // Изменять json-файл для удобства МОЖНО!
 // Представьте, что вы попросили бэкенд-разработчика об этом
-
-import {useHttp} from '../../hooks/http.hook';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import classNames from 'classnames';
-import { filtersFetching, filtersFetched, filtersFetchingError, activeFilterChanged} from '../../actions';
-import Spinner from '../spinner/Spinner';
-import { render } from '@testing-library/react';
 
 const HeroesFilters = () => {
 

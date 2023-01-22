@@ -1,8 +1,9 @@
 import { useHttp } from '../../hooks/http.hook';
 import { useState } from 'react';
-import { heroAdded } from '../../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+
+import { heroCreated } from '../../actions';
 
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
@@ -27,7 +28,7 @@ const HeroesAddForm = () => {
     const onAdd = (e) => {
         e.preventDefault();
 
-        const heroData = {
+        const newHero = {
             "id": uuidv4(),
             "name": nameHero,
             "description": descHero,
@@ -36,8 +37,9 @@ const HeroesAddForm = () => {
 
         console.log('added');
 
-        request(`http://localhost:3001/heroes`, 'POST', JSON.stringify(heroData))
-            .then(dispatch(heroAdded(heroData)))
+        request(`http://localhost:3001/heroes`, 'POST', JSON.stringify(newHero))
+            .then(res => console.log(res, 'Отправка успешна'))
+            .then(dispatch(heroCreated(newHero)))
             .catch(err => console.log(err));
 
             setNameHero('');
@@ -55,7 +57,7 @@ const HeroesAddForm = () => {
         if (filters && filters.length > 0 ) {
             return filters.map(({name, label}) => {
                 // eslint-disable-next-line
-                if (name === 'all')  return;
+                if (name === 'all') return;
 
                 return <option key={name} value={name}>{label}</option>
             })
