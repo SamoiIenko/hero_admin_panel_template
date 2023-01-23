@@ -17,6 +17,12 @@
       "name": "Морской герой",
       "description": "Как аквамен, но не из DC",
       "element": "water"
+    },
+    {
+      "id": "ea4499fc-7a04-4731-be01-7251d0e56e45",
+      "name": "Андрей",
+      "description": "Работать ",
+      "element": "earth"
     }
   ],
   "filters": [
