@@ -34,7 +34,6 @@ const HeroesFilters = () => {
     }
 
     const renderFilters = (arr) => {
-        console.log(arr);
         if (arr.length === 0) {
             return <h5 className='text-center mt-5'>Фильтры не найдены</h5>
         }
